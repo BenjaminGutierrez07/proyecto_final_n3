@@ -1,0 +1,13 @@
+Buenas Tardes profe realizo la entrega de mi proyecto final, pero no pude terminar todas las funciones por que el tiempo me piso pero aun continuo trabajando
+
+// Estudiante : Benjamin Gutierrez.
+
+\\Profe se que debo continuar la haciendo y puedo hacerlo, se que aun me falta la verdad el tiempo no me alcanzo pudo hacer lo que son las sesiones y poder mostrar mi base de datos los datos que tengo en las tablas pero continuare trabajando profe se que puedo terminarlo solo el tiempo no me alcanzo.
+
+Le muestro aca los usuarios para que puedan entrar con el usuario
+
+1 Admin : usuario = admin@admin . contrasena = 12345;
+
+2 Maestro : usuario = roberto@maestro . contrasena = 54321;
+
+3 Alumno : usuario = javier@alumno . contrasena = 98765;
