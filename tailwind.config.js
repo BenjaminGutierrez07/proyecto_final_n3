@@ -1,0 +1,41 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./*.php"],
+  theme: {
+    extend: {},
+    width: {
+      'custom-10': '10px',
+      'custom-20': '20px',
+      'custom-30': '30px',
+      'custom-40': '40px',
+      'custom-100': '100px',
+      'custom-150': '150px',
+      'custom-200': '200px',
+      'custom-219': '219px',
+      'custom-220': '220px',
+      'custom-300': '300px',
+      'custom-500': '500px',
+      'custom-600': '600px',
+      'custom-750': '750px', 
+      'custom-900': '900px',
+      'custom-1100': '1100px',
+      'custom-1150': '1150px',
+    },
+
+    height: {
+      'custom-10': '10px',
+      'custom-20': '20px',
+      'custom-30': '30px',
+      'custom-40': '40px',
+      'custom-300': '300px',
+      'custom-400': '400px',
+      'custom-450': '450px',
+      'custom-500': '500px',
+      'custom-660': '660px',
+      'custom-900': '900px',
+      'custom-1100': '1100px',
+      'custom-1150': '1150px',
+    }, 
+  },
+  plugins: [],
+}
