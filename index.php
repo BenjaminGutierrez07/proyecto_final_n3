@@ -20,7 +20,7 @@
                 </svg>
             </div>
             <div class="relative">
-                <input class="w-custom-300 h-10 p-3 border-2 rounded-md" type="email" name="email" placeholder="Email">
+                <input class="w-custom-300 h-10 p-3 border-2 rounded-md" type="password" name="password" placeholder="Password">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill absolute right-3 top-4 w-custom-20 h-custom-20 text-gray-300" viewBox="0 0 16 16">
                     <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" />
                 </svg>

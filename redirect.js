@@ -1,5 +1,9 @@
 
 //funciones admin
+function dashboardadmi() {
+  window.location.href = "admindash.php";
+}
+
 function menuadmin() {
   const dropdownContent = document.querySelector(".dropdown-content");
   dropdownContent.classList.toggle("hidden");

@@ -8,6 +8,7 @@ module.exports = {
       'custom-20': '20px',
       'custom-30': '30px',
       'custom-40': '40px',
+      'custom-60': '60px',
       'custom-100': '100px',
       'custom-150': '150px',
       'custom-200': '200px',
