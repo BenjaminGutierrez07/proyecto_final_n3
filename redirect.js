@@ -50,7 +50,7 @@ function logout() {
       .then(response => response.text())
       .then(data => {
           if (data === 'logout') {
-              window.location.href = 'login.php';
+              window.location.href = 'index.php';
           }
       })
       .catch(error => console.error('Error:', error));
