@@ -71,5 +71,4 @@ if (!isset($_SESSION['user_permiso'])) {
         </div>
     </main>
 </body>
-
 </html>
