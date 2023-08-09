@@ -43,6 +43,10 @@ function alumno() {
 
 
 //funciones alumno
+function dashboardalumn() {
+  window.location.href = "alumndash.php";
+}
+
 function calificacion() {
   window.location.href = "alumncal.php";
 }
