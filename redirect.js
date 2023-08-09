@@ -30,6 +30,10 @@ function clases() {
 
 
 //funciones maestro
+function dashboardmaes() {
+  window.location.href = "maestrodash.php";
+}
+
 function alumno() {
   window.location.href = "maestroalum.php";
 }
