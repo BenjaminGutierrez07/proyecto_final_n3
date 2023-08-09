@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 08, 2023 at 07:56 PM
+-- Generation Time: Aug 09, 2023 at 01:18 AM
 -- Server version: 8.0.31
 -- PHP Version: 8.2.0
 
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `administrador` (
   UNIQUE KEY `dni` (`dni`),
   UNIQUE KEY `usuario` (`usuario`(100)),
   KEY `dni_2` (`dni`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `administrador`
@@ -52,9 +52,15 @@ CREATE TABLE IF NOT EXISTS `administrador` (
 INSERT INTO `administrador` (`id`, `dni`, `nombre`, `usuario`, `contrasena`, `permiso`, `estado`, `direccion`, `nacimiento`, `clase`) VALUES
 (1, 1, 'admin', 'admin@admin', '12345', 'Administrador', 'Activo', '', '0000-00-00', ''),
 (2, 3567894, 'Roberto', 'roberto@maestro', '54321', 'Maestro', 'Activo', 'calle juan', '2013-08-23', 'Historia'),
-(5, 3687976, 'Javier', 'javier@alumno', '98765', 'Alumno', 'Activo', 'calle juan de la rosa', '2020-02-01', ''),
-(6, 1547387, 'Juan', 'juan@alumno', '', 'Alumno', 'Activo', 'calle enrique', '2015-04-23', ''),
-(7, 1265754, 'Maria', 'maria@maestro', '', 'Maestro', 'Activo', 'calle españa', '0000-00-00', 'Ciencias');
+(5, 3687976, 'Javier', 'javier@alumno', '98765', 'Alumno', 'Activo', 'calle la rosa', '2020-02-01', ''),
+(6, 1547387, 'Juan', 'juan@alumno', '23456', 'Alumno', 'Activo', 'calle enrique', '2015-04-23', ''),
+(7, 1265754, 'Maria', 'maria@maestro', '76543', 'Maestro', 'Activo', 'calle españa', '0000-00-00', 'Ciencias'),
+(8, 2765845, 'Angel', 'angel@maestro', '96754', 'Maestro', 'Activo', 'Calle Sol', '2020-03-04', 'Tecnologia'),
+(9, 2546754, 'Estefany', 'estefany@maestro', '37658', 'Maestro', 'Activo', 'Calle martines', '2015-07-23', 'Arquitectura'),
+(10, 8745643, 'Lucas', 'lucas@maestro', '65987', 'Maestro', 'Activo', 'calle Sucre', '2016-09-28', 'Base de Datos'),
+(11, 10495969, 'Valentina', 'valentina@alumno', '47698', 'Alumno', 'Activo', 'calle Azul', '2018-11-27', ''),
+(12, 286547, 'Manuel', 'manuel@alumno', '57643', 'Alumno', 'Activo', 'calle estado', '2020-01-20', ''),
+(13, 1765987, 'Luz', 'luz@alumno', '64987', 'Alumno', 'Activo', 'calle pascana', '2020-02-20', '');
 
 -- --------------------------------------------------------
 
