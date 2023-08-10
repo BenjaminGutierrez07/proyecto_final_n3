@@ -114,13 +114,62 @@ if (!$resultado) {
                             echo "<div class='w-custom-220 border-2 border-slate-900 flex items-center p-2'>" . $fila['usuario'] . "</div>";
                             echo "<div class='w-custom-220 border-2 border-slate-900 flex items-center p-2'>" . $fila['direccion'] . "</div>";
                             echo "<div class='w-custom-220 border-2 border-slate-900 flex items-center p-2'>" . $fila['nacimiento'] . "</div>";
-                            echo "<button class='w-custom-220 border-2 border-slate-900 flex justify-center items-center p-2'>" . "<svg xmlns='http://www.w3.org/2000/svg width='16' height='16' fill='currentColor' class='bi bi-pencil-square text-white' viewBox='0 0 16 16'>" .
+                            echo "<button class='w-custom-220 border-2 border-slate-900 flex justify-center items-center p-2'onclick='editalum(" . $fila['dni'] . ", \"" . $fila['usuario'] . "\", \"" . $fila['nombre'] . "\")'>" . "<svg xmlns='http://www.w3.org/2000/svg width='16' height='16' fill='currentColor' class='bi bi-pencil-square text-white' viewBox='0 0 16 16'>" .
                                 "<path d='M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z'/>" . "
                                     <path fill-rule='evenodd' d='M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z'/>" .
                                 "</svg>" . "</button>";
                             echo "</div>";
                             $contador++;
                             }
+                        }
+                        ?>
+                    </div>
+                </div>
+                <div id="editalumno" class="h-custom-600 hidden fixed inset-x-0 top-0 flex items-center justify-center bg-gradient-to-b bg-slate-900 bg-opacity-30 mt-10">
+                    <div class="w-custom-400 bg-white p-4 rounded-md shadow-md">
+                        <h1 class="text-xl font-semibold mb-2">Permission edit</h1>
+                        <form method="post" action="">
+                        <p class="font-bold">DNI</p>
+                        <p id="dniValue" class="border-2 rounded-md p-1 mb-4"></p>
+                        <p class="font-bold">Nombre</p>
+                        <p id="nombreValue" class="border-2 rounded-md p-1 mb-4"></p>
+                        <p class="font-bold">User email</p>
+                        <p id="usuarioValue" class="border-2 rounded-md p-1 mb-4"></p>
+                        <p class="font-bold">Address</p>
+                        <p id="direccionValue" class="border-2 rounded-md p-1 mb-4"></p>
+                        <p class="font-bold">Birthday</p>
+                        <p id="nacimientoValue" class="border-2 rounded-md p-1 mb-4"></p>
+                        <p class="font-bold">User email</p>
+                        <p id="usuarioValue" class="border-2 rounded-md p-1 mb-4"></p>
+                            <input type="hidden" id="dniInput" name="dni" value="">
+                            <p class="font-bold">Estado:</p>
+                            <p id="estadoValue" class="border-2 rounded-md p-1 mb-3"></p>
+                            <div class="flex justify-end">
+                                <button type="submit" id="saveButton" class="px-3 py-1 bg-blue-500 text-white rounded">Save</button>
+                            </div>
+                        </form>
+                        <div class="flex justify-end">
+                        <button id="cancelButton" class="px-3 py-1 bg-gray-300 rounded">Cancel</button>
+                        </div>
+                        <?php
+                        if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['dni']) && isset($_POST['nuevoPermiso'])) {
+                            $dni = $_POST['dni'];
+                            $nuevoPermiso = $_POST['nuevoPermiso'];
+
+                            $conexion = mysqli_connect('localhost', 'root', '', 'proyecto_final');
+
+                            if (!$conexion) {
+                                die('Error de conexión: ' . mysqli_connect_error());
+                            }
+
+                            $dni = mysqli_real_escape_string($conexion, $dni);
+                            $nuevoPermiso = mysqli_real_escape_string($conexion, $nuevoPermiso);
+
+                            $sql = "UPDATE administrador SET permiso = '$nuevoPermiso' WHERE dni = '$dni'";
+                            if (mysqli_query($conexion, $sql)) {
+                            }
+                            
+                            mysqli_close($conexion);
                         }
                         ?>
                     </div>

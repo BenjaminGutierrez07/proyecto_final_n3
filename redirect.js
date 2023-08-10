@@ -48,23 +48,7 @@ function addmaes(dni) {
   document.getElementById('addmaestro').classList.add('hidden');
     });
 }
-function editmaes(dni, usuario, nombre, direccion, nacimiento, curzo) {
-  document.getElementById("editmaestro").classList.remove("hidden");
-  document.getElementById('dniInput').value = dni;
-  document.getElementById('nombrema').textContent = nombre;
-  document.getElementById('usuarioma').textContent = usuario;
-  document.getElementById('direcma').textContent = direccion;
-  document.getElementById('nacima').textContent = nacimiento;
-  document.getElementById('clasma').textContent = curzo;
 
-  document.getElementById('cancelButton').addEventListener('click', function() {
-  document.getElementById('editmaestro').classList.add('hidden');
-  });
-
-  document.getElementById('saveButton').addEventListener('click', function() {
-  document.getElementById('editmaestro').classList.add('hidden');
-    });
-}
 
 
 
@@ -72,6 +56,25 @@ function editmaes(dni, usuario, nombre, direccion, nacimiento, curzo) {
 function alumnos() {
   window.location.href = "adminalum.php";
 }
+function editalum(dni, usuario, nombre, estado, direccion, nacimiento) {
+  document.getElementById("editalumno").classList.remove("hidden");
+  document.getElementById('dniInput').value = dni;
+  document.getElementById('dniValue').textContent = dni;
+  document.getElementById('usuarioValue').textContent = usuario;
+  document.getElementById('nombreValue').textContent = nombre;
+  document.getElementById('estadoValue').textContent = estado;
+  document.getElementById('direccionValue').textContent = direccion;
+  document.getElementById('nacimientoValue').textContent = nacimiento;
+
+  document.getElementById('cancelButton').addEventListener('click', function() {
+  document.getElementById('editalumno').classList.add('hidden');
+  });
+
+  document.getElementById('saveButton').addEventListener('click', function() {
+  document.getElementById('editalumno').classList.add('hidden');
+    });
+}
+
 
 function clases() {
   window.location.href = "adminclass.php";
