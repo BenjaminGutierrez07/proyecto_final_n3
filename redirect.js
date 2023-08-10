@@ -13,7 +13,7 @@ function menuadmin() {
 
 function permisos() {
     window.location.href = "adminperm.php";
-  }
+}
 function editper(dni, usuario, estado) {
   document.getElementById("editpermiso").classList.remove("hidden");
   document.getElementById('usuarioValue').textContent = usuario;
@@ -36,6 +36,20 @@ function editper(dni, usuario, estado) {
 function maestros() {
   window.location.href = "adminmaes.php";
 }
+function editmaes(dni, usuario, estado) {
+  document.getElementById("editpermiso").classList.remove("hidden");
+
+  document.getElementById('cancelButton').addEventListener('click', function() {
+  document.getElementById('editpermiso').classList.add('hidden');
+  });
+
+  document.getElementById('saveButton').addEventListener('click', function() {
+  document.getElementById('editpermiso').classList.add('hidden');
+    });
+}
+
+
+
 
 function alumnos() {
   window.location.href = "adminalum.php";

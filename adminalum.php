@@ -106,7 +106,7 @@ if (!$resultado) {
                         <?php
                         $contador = 1;
                         while ($fila = mysqli_fetch_assoc($resultado)) {
-                            if ($fila['permiso'] == 'Alumno') {
+                            if ($fila['permiso'] == 'Alumno' || $fila['permiso'] == 'alumno') {
                             echo "<div class='w-custom-1100 h-custom-40 flex bg-slate-500 border-2 border-slate-900'>";
                             echo "<div class='w-custom-220 border-2 border-slate-900 flex items-center p-2'>" . $contador . "</div>";
                             echo "<div class='w-custom-220 border-2 border-slate-900 flex items-center p-2'>" . $fila['dni'] . "</div>";

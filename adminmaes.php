@@ -78,7 +78,7 @@ if (!$resultado) {
                 <p class="p-3 text-bold text-2xl">List of permissions</p>
                 <div class="w-custom-1150 h-10 p-1.5 bg-slate-50 border-b-2 flex justify-between">
                     <p>Permissions Info</p>
-                    <button class="w-custom-100 h-custom-30 bg-sky-600 text-white rounded-md">Add Teacher</button>
+                    <button class="w-custom-100 h-custom-30 bg-sky-600 text-white rounded-md" onclick="editmaes()">Add Teacher</button>
                 </div>
                 <div class="w-full h-custom-450 p-4 bg-slate-50 rounded-b-lg">
                     <div class="flex justify-between">
@@ -106,7 +106,7 @@ if (!$resultado) {
                         <?php
                         $contador = 1;
                         while ($fila = mysqli_fetch_assoc($resultado)) {
-                            if ($fila['permiso'] == 'Maestro') {
+                            if ($fila['permiso'] == 'Maestro' || $fila['permiso'] == 'maestro') {
                             echo "<div class='w-custom-1100 h-custom-40 flex bg-slate-500 border-2 border-slate-900'>";
                             echo "<div class='w-custom-220 border-2 border-slate-900 flex items-center p-2'>" . $contador . "</div>";
                             echo "<div class='w-custom-220 border-2 border-slate-900 flex items-center p-2'>" . $fila['nombre'] . "</div>";
@@ -126,9 +126,66 @@ if (!$resultado) {
                         ?>
                     </div>
                 </div>
+                <div id="editpermiso" class="h-custom-600 hidden fixed inset-x-0 top-0 flex items-center justify-center bg-gradient-to-b bg-slate-900 bg-opacity-30 mt-10">
+                    <div class="w-custom-400 bg-white p-4 rounded-md shadow-md">
+                        <h1 class="text-xl font-semibold mb-2">Add Teacher</h1>
+                        <form method="post" action="">
+                        <p class="font-bold">DNI</p>
+                        <input name="dni" class="w-custom-300 border-2 rounded-md p-1 mb-1" placeholder="*******"></input>
+                        <p class="font-bold">Email</p>
+                        <input name="email" type="email" class="w-custom-300 border-2 rounded-md p-1 mb-1" placeholder="user@maestro"></input>
+                        <p class="font-bold">Password</p>
+                        <input name="password" type="password" class="w-custom-300 border-2 rounded-md p-1 mb-1" placeholder="*****"></input>
+                        <p class="font-bold">Name</p>
+                        <input name="name" class="w-custom-300 border-2 rounded-md p-1 mb-1" placeholder="Name"></input>
+                        <p class="font-bold">Class</p>
+                        <input name="class" class="w-custom-300 border-2 rounded-md p-1 mb-1" placeholder="Class"></input>
+                        <p class="font-bold">Permiso</p>
+                        <input name="permiso" class="w-custom-300 border-2 rounded-md p-1 mb-1" placeholder="Maestro"></input>
+                        <p class="font-bold">Estado</p>
+                        <input name="estado" class="w-custom-300 border-2 rounded-md p-1 mb-1"></input>
+                            <div class="flex justify-end">
+                                <button type="submit" id="saveButton" class="px-3 py-1 bg-blue-500 text-white rounded">Save</button>
+                            </div>
+                        </form>
+                        <div class="flex justify-end">
+                        <button id="cancelButton" class="px-3 py-1 bg-gray-300 rounded">Cancel</button>
+                        </div>
+                        <?php
+                        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+                            $dni = $_POST['dni'];
+                            $email = $_POST['email'];
+                            $password = $_POST['password'];
+                            $name = $_POST['name'];
+                            $permiso = $_POST['permiso'];
+                            $estado = $_POST['estado'];
+                            $class = $_POST['class'];
+
+                            $conexion = mysqli_connect('localhost', 'root', '', 'proyecto_final');
+
+                            if (!$conexion) {
+                                die('Error de conexión: ' . mysqli_connect_error());
+                            }
+
+                            $dni = mysqli_real_escape_string($conexion, $dni);
+                            $email = mysqli_real_escape_string($conexion, $email);
+                            $password = mysqli_real_escape_string($conexion, $password);
+                            $name = mysqli_real_escape_string($conexion, $name);
+                            $permiso = mysqli_real_escape_string($conexion, $permiso);
+                            $estado = mysqli_real_escape_string($conexion, $estado);
+                            $class = mysqli_real_escape_string($conexion, $class);
+
+                            $sql = "INSERT INTO administrador (dni, usuario, contrasena, nombre, permiso, estado, clase) VALUES ('$dni', '$email', '$password', '$name', '$permiso', '$estado', '$class')";
+                            if (mysqli_query($conexion, $sql)) {
+                            }
+                            
+                            mysqli_close($conexion);
+                        }
+                        ?>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
 </body>
-
 </html>
