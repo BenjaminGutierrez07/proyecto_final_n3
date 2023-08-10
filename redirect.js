@@ -36,15 +36,33 @@ function editper(dni, usuario, estado) {
 function maestros() {
   window.location.href = "adminmaes.php";
 }
-function editmaes(dni, usuario, estado) {
-  document.getElementById("editpermiso").classList.remove("hidden");
+function addmaes(dni) {
+  document.getElementById("addmaestro").classList.remove("hidden");
+  document.getElementById('dniInput').value = dni;
 
   document.getElementById('cancelButton').addEventListener('click', function() {
-  document.getElementById('editpermiso').classList.add('hidden');
+  document.getElementById('addmaestro').classList.add('hidden');
   });
 
   document.getElementById('saveButton').addEventListener('click', function() {
-  document.getElementById('editpermiso').classList.add('hidden');
+  document.getElementById('addmaestro').classList.add('hidden');
+    });
+}
+function editmaes(dni, usuario, nombre, direccion, nacimiento, curzo) {
+  document.getElementById("editmaestro").classList.remove("hidden");
+  document.getElementById('dniInput').value = dni;
+  document.getElementById('nombrema').textContent = nombre;
+  document.getElementById('usuarioma').textContent = usuario;
+  document.getElementById('direcma').textContent = direccion;
+  document.getElementById('nacima').textContent = nacimiento;
+  document.getElementById('clasma').textContent = curzo;
+
+  document.getElementById('cancelButton').addEventListener('click', function() {
+  document.getElementById('editmaestro').classList.add('hidden');
+  });
+
+  document.getElementById('saveButton').addEventListener('click', function() {
+  document.getElementById('editmaestro').classList.add('hidden');
     });
 }
 

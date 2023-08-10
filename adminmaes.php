@@ -78,7 +78,7 @@ if (!$resultado) {
                 <p class="p-3 text-bold text-2xl">List of permissions</p>
                 <div class="w-custom-1150 h-10 p-1.5 bg-slate-50 border-b-2 flex justify-between">
                     <p>Permissions Info</p>
-                    <button class="w-custom-100 h-custom-30 bg-sky-600 text-white rounded-md" onclick="editmaes()">Add Teacher</button>
+                    <button class="w-custom-100 h-custom-30 bg-sky-600 text-white rounded-md" onclick="addmaes()">Add Teacher</button>
                 </div>
                 <div class="w-full h-custom-450 p-4 bg-slate-50 rounded-b-lg">
                     <div class="flex justify-between">
@@ -114,7 +114,7 @@ if (!$resultado) {
                             echo "<div class='w-custom-220 border-2 border-slate-900 flex items-center p-2'>" . $fila['direccion'] . "</div>";
                             echo "<div class='w-custom-220 border-2 border-slate-900 flex items-center p-2'>" . $fila['nacimiento'] . "</div>";
                             echo "<div class='w-custom-220 border-2 border-slate-900 flex items-center p-2'>" . $fila['clase'] . "</div>";
-                            echo "<button class='w-custom-220 border-2 border-slate-900 flex justify-center items-center p-2'>" . "<svg xmlns='http://www.w3.org/2000/svg width='16' height='16' fill='currentColor' class='bi bi-pencil-square text-white' viewBox='0 0 16 16'>" .
+                            echo "<button class='w-custom-220 border-2 border-slate-900 flex justify-center items-center p-2' onclick='editmaes(" . $fila['dni'] . ", \"" . $fila['nombre'] . "\", \"" . $fila['usuario'] . "\"" . $fila['direccion'] . "\" " . $fila['nacimiento'] . "\" " . $fila['clase'] . "\")'>" . "<svg xmlns='http://www.w3.org/2000/svg width='16' height='16' fill='currentColor' class='bi bi-pencil-square text-white' viewBox='0 0 16 16'>" .
                                 "<path d='M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z'/>" . "
                                     <path fill-rule='evenodd' d='M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z'/>" .
                                 "</svg>" . "</button>";
@@ -126,7 +126,8 @@ if (!$resultado) {
                         ?>
                     </div>
                 </div>
-                <div id="editpermiso" class="h-custom-600 hidden fixed inset-x-0 top-0 flex items-center justify-center bg-gradient-to-b bg-slate-900 bg-opacity-30 mt-10">
+
+                <div id="addmaestro" class="h-custom-600 hidden fixed inset-x-0 top-0 flex items-center justify-center bg-gradient-to-b bg-slate-900 bg-opacity-30 mt-10">
                     <div class="w-custom-400 bg-white p-4 rounded-md shadow-md">
                         <h1 class="text-xl font-semibold mb-2">Add Teacher</h1>
                         <form method="post" action="">
@@ -176,6 +177,57 @@ if (!$resultado) {
                             $class = mysqli_real_escape_string($conexion, $class);
 
                             $sql = "INSERT INTO administrador (dni, usuario, contrasena, nombre, permiso, estado, clase) VALUES ('$dni', '$email', '$password', '$name', '$permiso', '$estado', '$class')";
+                            if (mysqli_query($conexion, $sql)) {
+                            }
+                            
+                            mysqli_close($conexion);
+                        }
+                        ?>
+                    </div>
+                </div>
+
+                <div id="editmaestro" class="h-custom-600 hidden fixed inset-x-0 top-0 flex items-center justify-center bg-gradient-to-b bg-slate-900 bg-opacity-30 mt-10">
+                    <div class="w-custom-400 bg-white p-4 rounded-md shadow-md">
+                        <h1 class="text-xl font-semibold mb-2">Add Teacher</h1>
+                        <form method="post" action="">
+                        <p class="font-bold">Nombre</p>
+                        <input name="nombrema" class="w-custom-300 border-2 rounded-md p-1 mb-1"></input>
+                        <p class="font-bold">Email</p>
+                        <input name="usuarioma" type="email" class="w-custom-300 border-2 rounded-md p-1 mb-1"></input>
+                        <p class="font-bold">Direccion</p>
+                        <input name="direcma" type="password" class="w-custom-300 border-2 rounded-md p-1 mb-1"></input>
+                        <p class="font-bold">Nacimiento</p>
+                        <input name="nacima" class="w-custom-300 border-2 rounded-md p-1 mb-1"></input>
+                        <p class="font-bold">Class</p>
+                        <input name="clasma" class="w-custom-300 border-2 rounded-md p-1 mb-1"></input>
+                            <div class="flex justify-end">
+                                <button type="submit" id="saveButton" class="px-3 py-1 bg-blue-500 text-white rounded">Save</button>
+                            </div>
+                        </form>
+                        <div class="flex justify-end">
+                        <button id="cancelButton" class="px-3 py-1 bg-gray-300 rounded">Cancel</button>
+                        </div>
+                        <?php
+                        if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['dni']) && isset($_POST['nombrema']) && isset($_POST['usuarioma']) && isset($_POST['direcma']) && isset($_POST['nacima']) && isset($_POST['clasma'])) {
+                            $nombrema = $_POST['nombrema'];
+                            $usuarioma = $_POST['usuarioma'];
+                            $direcma = $_POST['direcma'];
+                            $nacima = $_POST['nacima'];
+                            $clasma= $_POST['clasma'];
+
+                            $conexion = mysqli_connect('localhost', 'root', '', 'proyecto_final');
+
+                            if (!$conexion) {
+                                die('Error de conexión: ' . mysqli_connect_error());
+                            }
+
+                            $nombrema = mysqli_real_escape_string($conexion, $nombrema);
+                            $usuarioma = mysqli_real_escape_string($conexion, $usuarioma);
+                            $direcma = mysqli_real_escape_string($conexion, $direcma);
+                            $nacima = mysqli_real_escape_string($conexion, $nacima);
+                            $clasma = mysqli_real_escape_string($conexion, $clasma);
+
+                            $sql = "UPDATE INTO administrador (nombre, usuario, direccion, nacimiento, clase) VALUES ('$dnombrema', '$usuarioma', '$direcma', '$nacima', '$clasma')";
                             if (mysqli_query($conexion, $sql)) {
                             }
                             
