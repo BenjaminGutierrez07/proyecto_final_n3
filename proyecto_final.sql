@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 10, 2023 at 07:14 AM
+-- Generation Time: Aug 10, 2023 at 08:17 PM
 -- Server version: 8.0.31
 -- PHP Version: 8.2.0
 
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `administrador` (
   UNIQUE KEY `dni` (`dni`),
   UNIQUE KEY `usuario` (`usuario`(100)),
   KEY `dni_2` (`dni`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `administrador`
@@ -62,7 +62,8 @@ INSERT INTO `administrador` (`id`, `dni`, `nombre`, `usuario`, `contrasena`, `pe
 (12, 286547, 'Manuel', 'manuel@alumno', '57643', 'Alumno', 'Activo', 'calle estado', '2020-01-20', ''),
 (13, 1765987, 'Luz', 'luz@alumno', '64987', 'Alumno', 'Activo', 'calle pascana', '2020-02-20', ''),
 (15, 5544365, 'Josefa', 'josefa@alumno', '19543', 'alumno', 'Activo', 'calle jose', '2020-10-12', ''),
-(29, 493120, 'Pablo', 'pablo@maestro', '04003', 'Maestro', 'Activo', '', '0000-00-00', 'Matematicas');
+(29, 493120, 'Pablo', 'pablo@maestro', '04003', 'Maestro', 'Activo', '', '0000-00-00', 'Matematicas'),
+(34, 3064753, '', 'martin@maestro', '', 'maestro', '', '', '0000-00-00', '');
 
 -- --------------------------------------------------------
 
