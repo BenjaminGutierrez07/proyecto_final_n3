@@ -15,6 +15,7 @@ module.exports = {
       'custom-219': '219px',
       'custom-220': '220px',
       'custom-300': '300px',
+      'custom-400': '400px',
       'custom-500': '500px',
       'custom-600': '600px',
       'custom-750': '750px', 

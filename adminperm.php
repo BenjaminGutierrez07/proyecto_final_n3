@@ -119,22 +119,48 @@ if (!$resultado) {
                     </div>
                 </div>
                 <div id="editpermiso" class="h-custom-600 hidden fixed inset-x-0 top-0 flex items-center justify-center bg-gradient-to-b bg-slate-900 bg-opacity-30 mt-10">
-                    <div class="bg-white p-4 rounded-md shadow-md">
-                        <h1 class="text-xl font-semibold mb-2">Editar Permiso</h1>
-                        <p>User email</p>
-                        <p id="usuarioValue"></p>
-                        <p>User Rol:</p>
-                        <select id="permisoSelect" class="w-full p-2 mb-2 border rounded">
-                            <option value="admi">Administrador</option>
-                            <option value="maestro">Maestro</option>
-                            <option value="alumno">Alumno</option>
-                        </select>
-                        <p>Estado:</p>
-                        <p id="estadoValue"></p>
+                    <div class="w-custom-400 bg-white p-4 rounded-md shadow-md">
+                        <h1 class="text-xl font-semibold mb-2">Permission edit</h1>
+                        <p class="font-bold">User email</p>
+                        <p id="usuarioValue" class="border-2 rounded-md p-1 mb-4"></p>
+                        <p class="font-bold">User Rol:</p>
+                        <form method="post" action="">
+                            <input type="hidden" id="dniInput" name="dni" value="">
+                            <select name="nuevoPermiso" id="permisoSelect" class="w-full p-2 mb-4 border rounded">
+                                <option value="admi">Administrador</option>
+                                <option value="maestro">Maestro</option>
+                                <option value="alumno">Alumno</option>
+                            </select>
+                            <p class="font-bold">Estado:</p>
+                            <p id="estadoValue" class="border-2 rounded-md p-1 mb-3"></p>
+                            <div class="flex justify-end">
+                                <button type="submit" id="saveButton" class="px-3 py-1 bg-blue-500 text-white rounded">Save</button>
+                            </div>
+                        </form>
                         <div class="flex justify-end">
-                        <button id="cancelButton" class="mr-2 px-3 py-1 bg-gray-300 rounded">Cancelar</button>
-                            <button id="saveButton" class="px-3 py-1 bg-blue-500 text-white rounded">Guardar</button>
+                        <button id="cancelButton" class="px-3 py-1 bg-gray-300 rounded">Cancel</button>
                         </div>
+                        <?php
+                        if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['dni']) && isset($_POST['nuevoPermiso'])) {
+                            $dni = $_POST['dni'];
+                            $nuevoPermiso = $_POST['nuevoPermiso'];
+
+                            $conexion = mysqli_connect('localhost', 'root', '', 'proyecto_final');
+
+                            if (!$conexion) {
+                                die('Error de conexión: ' . mysqli_connect_error());
+                            }
+
+                            $dni = mysqli_real_escape_string($conexion, $dni);
+                            $nuevoPermiso = mysqli_real_escape_string($conexion, $nuevoPermiso);
+
+                            $sql = "UPDATE administrador SET permiso = '$nuevoPermiso' WHERE dni = '$dni'";
+                            if (mysqli_query($conexion, $sql)) {
+                            }
+                            
+                            mysqli_close($conexion);
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
