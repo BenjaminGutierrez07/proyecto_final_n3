@@ -64,7 +64,7 @@ if (!$resultado) {
             </div>
         </div>
         <div class="flex flex-col">
-        <div class="w-custom-1100 flex justify-between h-15 p-3 bg-slate-50">
+            <div class="w-custom-1100 flex justify-between h-15 p-3 bg-slate-50">
                 <button class="w-custom-60 text-center hover:bg-gray-300 rounded-md" onclick="dashboardadmi()">Home</button>
                 <button class="px-2 py-2 flex justify-center hover:bg-gray-300 rounded-md" onclick="menuadmin()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill text-gray-400 w-custom-20 h-custom-20 inline-block mr-0" viewBox="0 0 16 16">
                         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
@@ -108,18 +108,38 @@ if (!$resultado) {
                             echo "<div class='w-custom-220 border-2 border-slate-900 flex items-center p-2'>" . $fila['usuario'] . "</div>";
                             echo "<div class='w-custom-220 border-2 border-slate-900 flex items-center p-2'>" . $fila['permiso'] . "</div>";
                             echo "<div class='w-custom-220 border-2 border-slate-900 flex items-center p-2'>" . $fila['estado'] . "</div>";
-                            echo "<button class='w-custom-220 border-2 border-slate-900 flex justify-center items-center p-2'>" . "<svg xmlns='http://www.w3.org/2000/svg width='16' height='16' fill='currentColor' class='bi bi-pencil-square text-white' viewBox='0 0 16 16'>" .
-                            "<path d='M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z'/>" . "
+                            echo "<button class='w-custom-220 border-2 border-slate-900 flex justify-center items-center p-2' onclick='editper(" . $fila['dni'] . ", \"" . $fila['usuario'] . "\", \"" . $fila['estado'] . "\")'>" . "<svg xmlns='http://www.w3.org/2000/svg width='16' height='16' fill='currentColor' class='bi bi-pencil-square text-white' viewBox='0 0 16 16'>" .
+                                "<path d='M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z'/>" . "
                                 <path fill-rule='evenodd' d='M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z'/>" .
-                            "</svg>" . "</button>";
+                                "</svg>" . "</button>";
                             echo "</div>";
                             $contador++;
                         }
                         ?>
                     </div>
                 </div>
+                <div id="editpermiso" class="h-custom-600 hidden fixed inset-x-0 top-0 flex items-center justify-center bg-gradient-to-b bg-slate-900 bg-opacity-30 mt-10">
+                    <div class="bg-white p-4 rounded-md shadow-md">
+                        <h1 class="text-xl font-semibold mb-2">Editar Permiso</h1>
+                        <p>User email</p>
+                        <p id="usuarioValue"></p>
+                        <p>User Rol:</p>
+                        <select id="permisoSelect" class="w-full p-2 mb-2 border rounded">
+                            <option value="admi">Administrador</option>
+                            <option value="maestro">Maestro</option>
+                            <option value="alumno">Alumno</option>
+                        </select>
+                        <p>Estado:</p>
+                        <p id="estadoValue"></p>
+                        <div class="flex justify-end">
+                        <button id="cancelButton" class="mr-2 px-3 py-1 bg-gray-300 rounded">Cancelar</button>
+                            <button id="saveButton" class="px-3 py-1 bg-blue-500 text-white rounded">Guardar</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
 </body>
+
 </html>

@@ -13,6 +13,17 @@ function permisos() {
     window.location.href = "adminperm.php";
   }
 
+function editper(dni, usuario, estado) {
+  document.getElementById("editpermiso").classList.remove("hidden");
+  document.getElementById('usuarioValue').textContent = usuario;
+  document.getElementById('estadoValue').textContent = estado;
+  console.log("Se hizo clic en el botón de la fila con DNI: " + dni);
+
+  document.getElementById('cancelButton').addEventListener('click', function() {
+    document.getElementById('editpermiso').classList.add('hidden');
+});
+}
+
 function maestros() {
   window.location.href = "adminmaes.php";
 }
