@@ -70,14 +70,13 @@ INSERT INTO `administrador` (`id`, `dni`, `nombre`, `usuario`, `contrasena`, `pe
 -- Table structure for table `clases`
 --
 
-DROP TABLE IF EXISTS `clases`;
 CREATE TABLE IF NOT EXISTS `clases` (
   `id` int NOT NULL AUTO_INCREMENT,
   `clase` varchar(250) NOT NULL,
   `maestro_dni` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `maestro_dni` (`maestro_dni`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `clases`
