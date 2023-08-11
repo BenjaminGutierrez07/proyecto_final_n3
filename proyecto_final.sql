@@ -27,7 +27,6 @@ SET time_zone = "+00:00";
 -- Table structure for table `administrador`
 --
 
-DROP TABLE IF EXISTS `administrador`;
 CREATE TABLE IF NOT EXISTS `administrador` (
   `id` int NOT NULL AUTO_INCREMENT,
   `dni` int NOT NULL,
@@ -43,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `administrador` (
   UNIQUE KEY `dni` (`dni`),
   UNIQUE KEY `usuario` (`usuario`(100)),
   KEY `dni_2` (`dni`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `administrador`
